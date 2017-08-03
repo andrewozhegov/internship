@@ -13,6 +13,6 @@ class TestController extends Controller
 
     public function send()
     {
-        //return view('test');
+        //return view('');
     }
 }

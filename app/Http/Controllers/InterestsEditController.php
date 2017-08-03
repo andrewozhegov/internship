@@ -8,16 +8,16 @@ class InterestsEditController extends Controller
 {
     public function show()
     {
-        return view('interests_edit');
+        return view('admin.interestsedit');
     }
 
     public function add()
     {
-        //return view('aboutme');
+        //return view('');
     }
 
     public function delete()
     {
-        //return view('aboutme');
+        //return view('');
     }
 }

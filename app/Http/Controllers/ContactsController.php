@@ -13,6 +13,6 @@ class ContactsController extends Controller
 
     public function send()
     {
-        //return view('aboutme');
+        //return view('');
     }
 }

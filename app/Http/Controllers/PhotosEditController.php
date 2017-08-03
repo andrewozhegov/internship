@@ -8,16 +8,16 @@ class PhotosEditController extends Controller
 {
     public function show()
     {
-        return view('photos_edit');
+        return view('admin.photosedit');
     }
 
     public function add()
     {
-        //return view('aboutme');
+        //return view('');
     }
 
     public function delete()
     {
-        //return view('aboutme');
+        //return view('');
     }
 }

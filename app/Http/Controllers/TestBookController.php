@@ -8,11 +8,11 @@ class TestBookController extends Controller
 {
     public function show()
     {
-        return view('testbook');
+        return view('admin.testbook');
     }
 
     public function delete()
     {
-        //return view('aboutme');
+        //return view('');
     }
 }

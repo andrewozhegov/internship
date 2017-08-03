@@ -8,16 +8,16 @@ class BlogController extends Controller
 {
     public function show()
     {
-        return view('aboutme');
+        return view('blog');
     }
 
     public function comment()
     {
-        //return view('aboutme');
+        //return view('');
     }
 
     public function deleteComment()
     {
-        //return view('aboutme');
+        //return view('');
     }
 }

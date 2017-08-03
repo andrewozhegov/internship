@@ -8,16 +8,16 @@ class VisitorsController extends Controller
 {
     public function show()
     {
-        return view('visitors');
+        return view('admin.visitors');
     }
 
     public function add()
     {
-        //return view('aboutme');
+        //return view('');
     }
 
     public function delete()
     {
-        //return view('aboutme');
+        //return view('');
     }
 }

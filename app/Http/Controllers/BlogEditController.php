@@ -8,16 +8,16 @@ class BlogEditController extends Controller
 {
     public function show()
     {
-        return view('blogedit');
+        return view('admin.blogedit');
     }
 
     public function add()
     {
-        //return view('aboutme');
+        //return view('');
     }
 
     public function delete()
     {
-        //return view('aboutme');
+        //return view('');
     }
 }

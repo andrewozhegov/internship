@@ -1,58 +1,23 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>LOGO - About me</title>
+@extends('layouts/main')
 
-    <link type="text/css" rel="stylesheet" href="../../../public/assets/css/style.css" />
+@section('page_name', 'About me')
 
-    <script type="text/javascript" src="../../../public/assets/js/mainfunc.js"></script>
-    <script type="text/javascript" src="../../../public/assets/js/clock.js"></script>
-    <script>
-        localStorage.setItem('AboutVisitCounter', (+localStorage.getItem('AboutVisitCounter') + 1));
-        setCookie("AboutCookie", + getCookie("AboutCookie") + 1);
-    </script>
+@section('css')
+    <link type="text/css" rel="stylesheet" href="{{ asset('/css/style.css') }}" />
+@endsection
 
-</head>
+@section('js')
+    <script type="text/javascript" src="{{ asset('/js/mainfunc.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/clock.js') }}"></script>
+@endsection
 
-<body>
-<header>
-    <nav>
-        <ul class="submenu">
-            <li><a href="/" onmouseover="setBg('index')" onmouseout="setBg('aboutme')">main page</a></li>
-            <li><a href="/aboutme">about me</a></li>
-            <li> <a href="/interests" onmouseover="setBg('interests')" onmouseout="setBg('aboutme')">interests</a>
-                <ul>
-                    <li><a href="/interests#books">books</a></li>
-                    <li><a href="/interests#films">films</a></li>
-                    <li><a href="/interests#music">bands</a></li>
-                </ul>
-            </li>
-            <li><a href="/study" onmouseover="setBg('study')" onmouseout="setBg('aboutme')">study</a></li>
-            <li><a href="/photos" onmouseover="setBg('photos')" onmouseout="setBg('aboutme')">photos</a></li>
-            <li><a href="/contacts" onmouseover="setBg('contacts')" onmouseout="setBg('aboutme')">contacts</a></li>
-            <li><a href="/test" onmouseover="setBg('test')" onmouseout="setBg('aboutme')">test</a></li>
-        </ul>
-    </nav>
-</header>
+@section('logo', 'ABOUT ME')
 
-<main>
-    <section id="head" class="head">
-        <script>setBg("aboutme")</script>
-        <div class="head-overlay">
-            <div class="logo">
-                <h4>web-programming</h4>
-                <h3>HTML5 + CSS3 + JS + PHP</h3>
-                <h1>ABOUT ME</h1>
-                <h6>some information about</h6>
-            </div>
-        </div>
-    </section>
-
+@section('content')
     <section class="content">
         <h1> Произвольная автобиография </h1>
         <div class="biogr">
-            <img class="ava" src="../../../public/assets/img/bio.jpg" alt="" />
+            <img class="ava" src="{{ asset('/img/bio.jpg') }}" alt="" />
             <h4> Andrew Emptiness </h4>
             <p>Я, Сергей Иванович Васильев, родился 12 апреля 1974 года в г. Красный Лиман Донецкой области (Украина).</p>
             <p>Мать – Васильева Татьяна Степановна, 1951 года рождения, украинка, имеет высшее педагогическое образование, работала педагогом (воспитателем в детском саду, затем школьным учителем), пенсионер. Проживает по адресу: г. Красный Лиман Донецкой обл., ул. Железнодорожная, 123.</p>
@@ -73,13 +38,4 @@
             <p>12 августа 2011 г.</p>
         </div>
     </section>
-</main>
-
-<footer>
-    <div class="foot">
-        <div class="currentDate" id="times"></div><br>
-        <p>SevGU, Andrew Emptiness © 2017</p>
-    </div>
-</footer>
-</body>
-</html>
+@endsection

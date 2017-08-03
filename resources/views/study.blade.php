@@ -1,53 +1,19 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>LOGO - Study</title>
+@extends('layouts/main')
 
-    <link rel="stylesheet" type="text/css" href="../../../public/assets/css/style.css" />
+@section('page_name', 'About me')
 
-    <script type="text/javascript" src="../../../public/assets/js/mainfunc.js"></script>
-    <script type="text/javascript" src="../../../public/assets/js/clock.js"></script>
-    <script>
-        localStorage.setItem('StudyVisitCounter', (+localStorage.getItem('StudyVisitCounter') + 1));
-        setCookie("StudyCookie", + getCookie("StudyCookie") + 1);
-    </script>
+@section('css')
+    <link type="text/css" rel="stylesheet" href="{{ asset('/css/style.css') }}" />
+@endsection
 
-</head>
+@section('js')
+    <script type="text/javascript" src="{{ asset('/js/mainfunc.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/clock.js') }}"></script>
+@endsection
 
-<body>
-<header>
-    <nav>
-        <ul class="submenu">
-            <li><a href="/" onmouseover="setBg('index')" onmouseout="setBg('interests')">main page</a></li>
-            <li><a href="/aboutme" onmouseover="setBg('aboutme')" onmouseout="setBg('index')">about me</a></li>
-            <li> <a href="/interests" onmouseover="setBg('interests')" onmouseout="setBg('index')">interests</a>
-                <ul>
-                    <li><a href="/interests#books">books</a></li>
-                    <li><a href="/interests#films">films</a></li>
-                    <li><a href="/interests#music">bands</a></li>
-                </ul>
-            </li>
-            <li><a href="/study">study</a></li>
-            <li><a href="/photos" onmouseover="setBg('photos')" onmouseout="setBg('index')">photos</a></li>
-            <li><a href="/contacts" onmouseover="setBg('contacts')" onmouseout="setBg('index')">contacts</a></li>
-            <li><a href="/test" onmouseover="setBg('test')" onmouseout="setBg('index')">test</a></li>
-        </ul>
-    </nav>
-</header>
+@section('logo', 'STUDY')
 
-<main>
-    <section id="head" class="head">
-        <script>setBg("study")</script>
-        <div class="head-overlay">
-            <div class="logo">
-                <h4>web-programming</h4>
-                <h3>HTML5 + CSS3 + JS + PHP</h3>
-                <h1>STUDY</h1>
-                <h6>some information about</h6>
-            </div>
-        </div>
-    </section>
+@section('content')
 
     <section class="content">
         <h1> Учеба </h1>
@@ -204,13 +170,4 @@
             </tbody>
         </table>
     </section>
-</main>
-
-<footer>
-    <div class="foot">
-        <div class="currentDate" id="times"></div><br>
-        <p>SevGU, Andrew Emptiness © 2017</p>
-    </div>
-</footer>
-</body>
-</html>
+@endsection
