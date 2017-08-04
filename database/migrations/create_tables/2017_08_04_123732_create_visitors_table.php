@@ -14,8 +14,9 @@ class CreateVisitorsTable extends Migration
     public function up()
     {
         Schema::create('visitors', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id'); // PK
             $table->unsignedInteger('user_id');
+
             $table->rememberToken();
             $table->timestamps();
         });
