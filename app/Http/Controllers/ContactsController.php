@@ -11,8 +11,8 @@ class ContactsController extends Controller
         return view('contacts');
     }
 
-    public function send()
+    public function send(Request $request)
     {
-        //return view('');
+        //print_r($_POST);
     }
 }

@@ -20,6 +20,9 @@
 @section('content')
     <section class="content">
         <h1> Фотогалерея </h1>
+
+
+
         <?php
         //Home::gallery()
         ?>

@@ -34,6 +34,7 @@
 </header>
 
 <main>
+    @section("logos")
     <section id="head" class="head">
         <script>setBg("index")</script>
         <div class="head-overlay">
@@ -45,6 +46,8 @@
             </div>
         </div>
     </section>
+    @endsection
+
     @section('content')
         <section class="content">
             <h1>СТРАНИЦА ШАБЛОНА ПРОЕКТИРОВАНИЯ</h1>
