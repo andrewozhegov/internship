@@ -24,95 +24,86 @@
         </div>
         <section>
             <h3><a name="books">● книги ●</a></h3>
-            <?php
-            $book1 = array(
-                'poster' => '../../../public/assets/img/books/kafka.jpg',
-                'name' => 'Кафка на пляже',
-                'author' => 'Харуки Мураками',
-                'year' => '2002',
-                'livelib_href' => 'https://www.livelib.ru/book/1001402358-kafka-na-plyazhe-murakami-h'
-            );
-            $book2 = array(
-                'poster' => '../../../public/assets/img/books/catcher.jpg',
-                'name' => 'Над пропастью во ржи',
-                'author' => 'Джером Дэвид Селинджер',
-                'year' => '1951',
-                'livelib_href' => 'https://www.livelib.ru/book/1001074375-the-catsher-in-the-rye-nad-propastyu-vo-rzhi-dzherom-devid-selindzher'
-            );
-            $book3 = array(
-                'poster' => '../../../public/assets/img/books/hobbit.jpg',
-                'name' => 'Хоббит',
-                'author' => 'Дж. Р. Р. Толкин',
-                'year' => '1937',
-                'livelib_href' => 'https://www.livelib.ru/book/1002207233-hobbit-dzh-r-r-tolkin'
-            );
-            //Home::putRecords($book1, $book2, $book3);
-            ?>
+
+            @if(isset($books))
+                @foreach($books as $book)
+                    <table class="record">
+                        <tr>
+                            <th rowspan="4" width="25%">
+                                <img class="poster" src="{{ asset($book['poster']) }}" alt="" />
+                            </th>
+                            <th><h1>{{ $book['name'] }}</h1></th>
+                        </tr>
+                        <tr><th><h3>{{ $book['author'] }}</h3></th></tr>
+                        <tr><th><h3>{{ $book['year'] }}</h3></th></tr>
+                        <tr>
+                            <th>
+                                <a href="{{ $book['livelib'] }}" target="_blank">
+                                    <img class="icon" src="{{ asset('img/icos/livelib.jpg') }}" alt="Livelib - {{ $book['name'] }}" />1</a>
+                            </th>
+                        </tr>
+                    </table>
+                @endforeach
+            @endif
+
         </section>
 
         <section>
             <h3><a name="films">● фильмы ●</a></h3>
-            <?php
-            $film1 = array(
-                'poster' => '../../../public/assets/img/films/im-origins.jpg',
-                'name' => 'Я - начало',
-                'author' => 'Жанр: Научная фантастика, Драма',
-                'year' => 'США, 2014',
-                'kinopoisk_href' => 'https://www.kinopoisk.ru/film/761933/'
-            );
-            $film2 = array(
-                'poster' => '../../../public/assets/img/films/the-theory-of-everything.jpg',
-                'name' => 'Вселенная Стивена Хоккинга',
-                'author' => 'Жанр: Биография, Драма',
-                'year' => 'Великобритания, 2014',
-                'kinopoisk_href' => 'https://www.kinopoisk.ru/film/770973/'
-            );
-            $film3 = array(
-                'poster' => '../../../public/assets/img/films/dead-poets-society.jpg',
-                'name' => 'Общество мертвых поэтов',
-                'author' => 'Жанр: Драма',
-                'year' => 'США, 1989',
-                'kinopoisk_href' => 'https://www.kinopoisk.ru/film/4996/'
-            );
-           // Home::putRecords($film1, $film2, $film3);
-            ?>
+
+            @if(isset($films))
+                @foreach($films as $film)
+                    <table class="record">
+                        <tr>
+                            <th rowspan="4" width="25%">
+                                <img class="poster" src="{{ asset($film['poster']) }}" alt="" />
+                            </th>
+                            <th><h1>{{ $film['name'] }}</h1></th>
+                        </tr>
+                        <tr><th><h3>{{ $film['genre'] }}</h3></th></tr>
+                        <tr><th><h3>{{ $film['year'] }}, {{ $film['country'] }}</h3></th></tr>
+                        <tr>
+                            <th>
+                                <a href="{{ $film['kinopoisk'] }}" target="_blank">
+                                    <img class="icon" src="{{ asset('img/icos/kinopoisk.png') }}" alt="Kinopoisk - {{ $film['name'] }}" /></a>
+                            </th>
+                        </tr>
+                    </table>
+                @endforeach
+            @endif
+
         </section>
 
         <section>
             <h3><a name="music">● музыка ●</a></h3>
-            <?php
-            $band1 = array(
-                'poster-m' => '../../../public/assets/img/music/hannah-trigwell.jpg',
-                'name' => 'Hannah Trigwell',
-                'author' => 'Жанр: Pop, Instrumental',
-                'year' => 'Великобритания, 1990',
-                'lastfm_href' => 'https://www.last.fm/music/Hannah+Trigwell',
-                'yam_href' => 'https://music.yandex.ru/artist/3136230',
-                'insta_href' => 'https://www.instagram.com/hannahtrigwell/',
-                'youtube_href' => 'https://www.youtube.com/user/hannahtrigwell'
-            );
-            $band2 = array(
-                'poster-m' => '../../../public/assets/img/music/lana-del-rey.jpg',
-                'name' => 'Lana Del Rey',
-                'author' => 'Жанр: Pop, Indie, Rock',
-                'year' => 'США, 1985',
-                'lastfm_href' => 'https://www.last.fm/ru/music/Lana%20Del%20Rey',
-                'yam_href' => 'https://music.yandex.ru/artist/643850',
-                'insta_href' => 'https://www.instagram.com/lanadelrey/',
-                'youtube_href' => 'https://www.youtube.com/user/LanaDelRey/'
-            );
-            $band3 = array(
-                'poster-m' => '../../../public/assets/img/music/oh-wonder.jpg',
-                'name' => 'Oh Wonder',
-                'author' => 'Жанр: Indie',
-                'year' => 'Великобритания, 2014',
-                'lastfm_href' => 'https://www.last.fm/music/Oh+Wonder',
-                'yam_href' => 'https://music.yandex.ru/artist/3680609',
-                'insta_href' => 'https://www.instagram.com/ohwondermusic/',
-                'youtube_href' => 'https://www.youtube.com/user/OhWonderMusicVEVO'
-            );
-            //Home::putRecords($band1, $band2, $band3);
-            ?>
+
+            @if(isset($bands))
+                @foreach($bands as $band)
+                    <table class="record">
+                        <tr>
+                            <th rowspan="4" width="30%">
+                                <img class="poster-m" src="{{ asset($band['poster']) }}" alt="" />
+                            </th>
+                            <th><h1>{{ $band['name'] }}</h1></th>
+                        </tr>
+                        <tr><th><h3>{{ $band['genre'] }}</h3></th></tr>
+                        <tr><th><h3>{{ $band['year'] }}, {{ $band['country'] }}</h3></th></tr>
+                        <tr>
+                            <th>
+                                <a href="{{ $band['lastfm'] }}" target="_blank">
+                                    <img class="icon" src="{{ asset('img/icos/lastfm.jpg') }}" alt="Lastfm - {{ $band['name'] }}" /></a>
+                                <a href="{{ $band['yam'] }}" target="_blank">
+                                    <img class="icon" src="{{ asset('img/icos/yam.jpg') }}" alt="Yandex Music - {{ $band['name'] }}" /></a>
+                                <a href="{{ $band['instagram'] }}" target="_blank">
+                                    <img class="icon" src="{{ asset('img/icos/instagram.jpg') }}" alt="Instagram - {{ $band['name'] }}" /></a>
+                                <a href="{{ $band['youtube'] }}" target="_blank">
+                                    <img class="icon" src="{{ asset('img/icos/youtube.png') }}" alt="YouTube - {{ $band['name'] }}" /></a>
+                            </th>
+                        </tr>
+                    </table>
+                @endforeach
+            @endif
+
         </section>
     </section>
 @endsection

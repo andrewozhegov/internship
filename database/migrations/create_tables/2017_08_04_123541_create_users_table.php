@@ -23,8 +23,6 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('role_id')->unsigned()->default(1);
 
-            //$table->foreign('role_id')->references('id')->on('roles'); //FK
-
             $table->rememberToken();
             $table->timestamps();
         });
@@ -39,11 +37,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        
-        Schema::table('users', function ($table) {
-            $table->dropForeign('users_role_id_foreign');
-        });
-
         Schema::dropIfExists('users');
     }
 }

@@ -11,15 +11,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        //$this->call(UsersTableSeeder::class); UNDONE !!! -
-        //$this->call(BooksTableSeeder::class); done
-        //$this->call(FilmsTableSeeder::class); done
-        //$this->call(BandsTableSeeder::class); done
-        //$this->call(RolesTableSeeder::class); done
-        //$this->call(PhotosTableSeeder::class); UNDONE !!! +
-        //$this->call(TestsTableSeeder::class); UNDONE !!! -
-        //$this->call(BlogsTableSeeder::class); UNDONE !!! -
-        //$this->call(VisitorsTableSeeder::class); UNDONE !!! -
-        //$this->call(ValuesTableSeeder::class); UNDONE !!! +
+        //$this->call(UsersTableSeeder::class); // UNDONE !!! -
+
+        /*
+        $this->call(BooksTableSeeder::class); // done
+        $this->call(FilmsTableSeeder::class); // done
+        $this->call(BandsTableSeeder::class); // done
+        $this->call(RolesTableSeeder::class); // done
+        */
+
+        //$this->call(PhotosTableSeeder::class); // UNDONE !!! +
+        //$this->call(TestsTableSeeder::class); // UNDONE !!! -
+        //$this->call(BlogsTableSeeder::class); // UNDONE !!! -
+        //$this->call(VisitorsTableSeeder::class); // UNDONE !!! -
+        //$this->call(ValuesTableSeeder::class); // UNDONE !!! +
     }
 }

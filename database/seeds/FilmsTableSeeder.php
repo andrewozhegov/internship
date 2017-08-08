@@ -32,7 +32,7 @@ class FilmsTableSeeder extends Seeder
         ]);
 
         DB::table('films')->insert([
-            'poster' => '../../../public/assets/img/films/dead-poets-society.jpg',
+            'poster' => '/img/films/dead-poets-society.jpg',
             'name' => 'Общество мертвых поэтов',
             'genre' => 'Жанр: Драма',
             'year' => '1989',
