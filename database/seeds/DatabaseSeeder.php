@@ -18,9 +18,9 @@ class DatabaseSeeder extends Seeder
         $this->call(FilmsTableSeeder::class); // done
         $this->call(BandsTableSeeder::class); // done
         $this->call(RolesTableSeeder::class); // done
+        $this->call(PhotosTableSeeder::class); // done
         */
 
-        //$this->call(PhotosTableSeeder::class); // UNDONE !!! +
         //$this->call(TestsTableSeeder::class); // UNDONE !!! -
         //$this->call(BlogsTableSeeder::class); // UNDONE !!! -
         //$this->call(VisitorsTableSeeder::class); // UNDONE !!! -
