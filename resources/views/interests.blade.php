@@ -1,6 +1,6 @@
 ﻿@extends('layouts/main')
 
-@section('page_name', 'About me')
+@section('page_name', 'Interests')
 
 @section('css')
     <link type="text/css" rel="stylesheet" href="{{ asset('/css/style.css') }}" />
@@ -39,7 +39,7 @@
                         <tr>
                             <th>
                                 <a href="{{ $book['livelib'] }}" target="_blank">
-                                    <img class="icon" src="{{ asset('img/icos/livelib.jpg') }}" alt="Livelib - {{ $book['name'] }}" />1</a>
+                                    <img class="icon" src="{{ asset('img/icos/livelib.jpg') }}" alt="Livelib - {{ $book['name'] }}" /></a>
                             </th>
                         </tr>
                     </table>
@@ -82,8 +82,7 @@
                     <table class="record">
                         <tr>
                             <th rowspan="4" width="30%">
-                                <img class="poster-m" src="{{ asset($band['poster']) }}" alt="" />
-                            </th>
+1                            </th>
                             <th><h1>{{ $band['name'] }}</h1></th>
                         </tr>
                         <tr><th><h3>{{ $band['genre'] }}</h3></th></tr>

@@ -25,12 +25,12 @@
 .prev{
   bottom:20px;
   left:20px;
-  background:url(../../../public/assets/img/controls.png) no-repeat 0 0;
+  background:url(/img/controls.png) no-repeat 0 0;
 }
 .next{
   bottom:20px;
   right:20px;
-  background:url(../../../public/assets/img/controls.png) no-repeat -48px 0;
+  background:url(/img/controls.png) no-repeat -48px 0;
 }
  
 .thumbnails{
