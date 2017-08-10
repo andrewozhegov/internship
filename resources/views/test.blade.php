@@ -4,6 +4,7 @@
 
 @section('css')
     <link type="text/css" rel="stylesheet" href="{{ asset('/css/style.css') }}" />
+    <link type="text/css" rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}" />
 @endsection
 
 @section('js')
@@ -15,20 +16,10 @@
 
 @section('content')
     <section class="content container">
-        <h1 style="margin: 50px"> Тест по Высшей Математике</h1>
-
-        <a class="btn btn-default btn-primary" href="/test_table" role="button">Таблица</a>
+        <h1 style="margin: 50px"> Тест</h1>
 
         <form id="form" class="form-horizontal" role="form" method="post">
 
-            <div class="form-group" style="margin: 50px">
-                <div class="col-md-1">
-                    <label for="form_fio" class="control-label">Ф И О</label>
-                </div>
-                <div class="col-md-11">
-                    <input type="text" name="name" class="form-control" id="form_fio" placeholder="Фамилия Имя Отчество">
-                </div>
-            </div>
             <div class="form-group" style="margin: 50px">
                 <div class="col-md-12">
                     <label>1. Треться степень это</label>
@@ -75,7 +66,7 @@
                         -6
                     </label>
                     <label class="checkbox-inline">
-                        <input type="checkbox" name="answer3" id="form_answer32" value="falses">
+                        <input type="checkbox" name="answer3" id="form_answer32" value="false">
                         3.1
                     </label>
                 </div>
@@ -90,13 +81,5 @@
                 </div>
             </div>
         </form>
-
-        {{--<?php
-        if (!empty($_POST)) {
-            TestValidation::showErrors($args['errors']);
-            echo '<br>';
-            TestVerification::showErrors($args['responses']);
-        }
-        ?>--}}
     </section>
 @endsection

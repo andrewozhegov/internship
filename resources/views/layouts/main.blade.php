@@ -27,6 +27,7 @@
                 <li><a href="/study" onmouseover="setBg('study')" onmouseout="setBg('index')">study</a></li>
                 <li><a href="/photos" onmouseover="setBg('photos')" onmouseout="setBg('index')">photos</a></li>
                 <li><a href="/contacts" onmouseover="setBg('contacts')" onmouseout="setBg('index')">contacts</a></li>
+                <li><a href="/blog" onmouseover="setBg('test')" onmouseout="setBg('index')">blog</a></li>
                 <li><a href="/test" onmouseover="setBg('test')" onmouseout="setBg('index')">test</a></li>
             </ul>
         </nav>
@@ -46,7 +47,7 @@
             </div>
         </div>
     </section>
-    @endsection
+    @show
 
     @section('content')
         <section class="content">

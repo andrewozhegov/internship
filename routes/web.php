@@ -33,20 +33,22 @@ Route::group(['middleware'=>'web'], function() {
     Route::get('/contacts',     ['as'=>'contacts', 'uses'=>'ContactsController@show']);
     Route::post('/contacts',    ['as'=>'contacts_send', 'uses'=>'ContactsController@send']);
 
-    Route::get('/test',         ['as'=>'test', 'uses'=>'TestController@show']);
-    Route::post('/test',        ['as'=>'test_send', 'uses'=>'TestController@send']);
-
-
-    /// not simple
-
     Route::get('/blog',         ['as'=>'blog', 'uses'=>'BlogController@show']);
-    Route::post('/blog',        ['as'=>'blog_comment', 'uses'=>'BlogController@comment']);
-    Route::delete('/blog',      ['as'=>'blog_delete_comment', 'uses'=>'BlogController@deleteComment']);
+
+    Route::group(['middleware'=>'auth'], function() {
+
+        Route::get('/test',         ['as'=>'test', 'uses'=>'TestController@show']);
+        Route::post('/test',        ['as'=>'test_send', 'uses'=>'TestController@send']);
+
+        Route::post('/blog',        ['as'=>'blog_comment', 'uses'=>'BlogController@comment']);
+        Route::delete('/blog',      ['as'=>'blog_delete_comment', 'uses'=>'BlogController@deleteComment']);
+
+    });
 
 
     // admin panel
 
-    Route::group(['prefix'=>"admin"/*, 'middleware'=>'auth'*/], function() {
+    Route::group(['prefix'=>"admin", 'middleware'=>'auth'], function() {
 
         Route::get('/',                   ['as'=>'photos', 'uses'=>'AdminController@show']);
 
@@ -73,6 +75,7 @@ Route::group(['middleware'=>'web'], function() {
     });
 
 });
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -53,7 +53,7 @@ header {
 }
 
 header ul {
-  width: 1000px;
+  width: 1200px;
   margin: 0 auto;
   padding: auto;
   list-style: none;
@@ -61,7 +61,7 @@ header ul {
 }
 header ul li {
   float: left;
-  width: 14%;
+  width: 12.5%;
 }
 header ul li a {
   text-decoration: none;
