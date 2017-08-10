@@ -11,8 +11,92 @@
     <script type="text/javascript" src="{{ asset('/js/clock.js') }}"></script>
 @endsection
 
-@section('logo', 'ANDREW EMPTINESS')
+@section('logo', 'TEST')
 
 @section('content')
+    <section class="content container">
+        <h1 style="margin: 50px"> Тест по Высшей Математике</h1>
 
+        <a class="btn btn-default btn-primary" href="/test_table" role="button">Таблица</a>
+
+        <form id="form" class="form-horizontal" role="form" method="post">
+
+            <div class="form-group" style="margin: 50px">
+                <div class="col-md-1">
+                    <label for="form_fio" class="control-label">Ф И О</label>
+                </div>
+                <div class="col-md-11">
+                    <input type="text" name="name" class="form-control" id="form_fio" placeholder="Фамилия Имя Отчество">
+                </div>
+            </div>
+            <div class="form-group" style="margin: 50px">
+                <div class="col-md-12">
+                    <label>1. Треться степень это</label>
+                </div>
+                <div class="col-md-12">
+                    <select name="answer1" id="form_answer1" class="form-control" required>
+                        <option value="error" selected>Не знаю</option>
+                        <option value="false">Квадрат</option>
+                        <option value="true">Куб</option>
+                        <option value="false">Гиперкуб</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group" style="margin: 50px">
+                <div class="col-md-4">
+                    <label for="form_answer2">2. 2 + 2 * 2 = ?</label>
+                </div>
+                <div class="col-md-12">
+                    <input type="number" id="form_answer2" class="form-control" name="answer2" min="0" max="9"  required>
+                </div>
+            </div>
+
+
+            <div class="form-group" style="margin: 50px">
+                <div class="col-md-4">
+                    <label>3. Натуральные числа</label>
+                </div>
+                <div class="col-md-12">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="answer3" id="form_answer32" value="false">
+                        1/2
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="answer3" id="form_answer32" value="true">
+                        0
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="answer3" id="form_answer32" value="true">
+                        4
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="answer3" id="form_answer32" value="false">
+                        -6
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="answer3" id="form_answer32" value="falses">
+                        3.1
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group" style="margin: 50px">
+                <div class="col-md-8">
+                    <input type="submit" id="submit" value="Отправить" class="form-control btn btn-block btn-primary">
+                </div>
+                <div class="col-md-4">
+                    <input id="reset" type="button" value="Очистить" class="form-control btn btn-block btn-default">
+                </div>
+            </div>
+        </form>
+
+        {{--<?php
+        if (!empty($_POST)) {
+            TestValidation::showErrors($args['errors']);
+            echo '<br>';
+            TestVerification::showErrors($args['responses']);
+        }
+        ?>--}}
+    </section>
 @endsection

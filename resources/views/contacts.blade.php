@@ -13,7 +13,7 @@
     <script type="text/javascript" src="{{ asset('/js/clock.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/js/calendar.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/js/form.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/js/jquery-3.2.1.js.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/jquery-3.2.1.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/js/jquery.webui-popover.min.js') }}"></script>
 @endsection
 
@@ -64,20 +64,30 @@
 
         <h3 style="margin: 50px">Отправить электронное письмо</h3>
 
+        @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <div class='center'>
             <form id="form" class="form-horizontal" method="post">
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="form_fio" class="col-md-2 control-label">Ф.И.О.:</label>
                     <div class="col-md-10">
-                        <input type="text" name="name" class="form-control" id="form_fio" placeholder="Фамилия Имя Отчество">
+                        <input type="text" name="name" class="form-control" id="form_fio" value="{{ old('name') }}" placeholder="Фамилия Имя Отчество">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-md-2 control-label">Пол:</label>
                     <div class="col-md-8">
                         <label class="radio-inline">
-                            <input type="radio" name="sex" id="form_man" value="man">
+                            <input type="radio" name="sex" id="form_man" value="man" checked>
                             Мужской
                         </label>
                         <label class="radio-inline">
@@ -89,19 +99,19 @@
                 <div class="form-group" id="date">
                     <label class="col-md-2 control-label">Дата рождения:</label>
                     <div class="col-md-10">
-                        <input type="text" name="dob" class="form-control" id="form_date" placeholder="Дата рождения">
+                        <input type="date" name="dob" class="form-control" id="form_date" value="{{ old('dob') }}" placeholder="Дата рождения">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="form_email" class="col-md-2 control-label">Email:</label>
                     <div class="col-md-10">
-                        <input type="email" name="email" class="form-control" id="form_email" placeholder="Email">
+                        <input type="email" name="email" class="form-control" id="form_email" value="{{ old('email') }}" placeholder="Email">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="form_phone" class="col-md-2 control-label">Телефон:</label>
                     <div class="col-md-10">
-                        <input type="text" name="phone" class="form-control" id="form_phone" placeholder="Телефон">
+                        <input type="tel" name="phone" class="form-control" id="form_phone" value="{{ old('phone') }}" placeholder="Телефон">
                     </div>
                 </div>
                 <div class="form-group">
@@ -114,10 +124,5 @@
                 </div>
             </form>
         </div>
-
-        <?php
-        //Validation::showErrors($args['errors']);
-        ?>
-
     </section>
 @endsection

@@ -82,7 +82,8 @@
                     <table class="record">
                         <tr>
                             <th rowspan="4" width="30%">
-1                            </th>
+                                <img class="poster-m" src="{{ asset($band['poster']) }}" alt="" />
+                            </th>
                             <th><h1>{{ $band['name'] }}</h1></th>
                         </tr>
                         <tr><th><h3>{{ $band['genre'] }}</h3></th></tr>

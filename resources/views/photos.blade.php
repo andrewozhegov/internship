@@ -38,7 +38,7 @@
                         </a>
                     @else
                         <a href="#">
-                            <img title="{{ $photo['name'] }}" src="{{ $photo['mic'] }}" alt="" />
+                            <img title="{{ $photo['name'] }}" src="{{ asset($photo['mic']) }}" alt="" />
                         </a>
                     @endif
                 @endforeach
