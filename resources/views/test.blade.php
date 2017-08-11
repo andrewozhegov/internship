@@ -28,7 +28,7 @@
             </div>
         @elseif(isset($value))
             <div class="alert alert-success">
-                <p>Success! Your value {{ $value }}</p>
+                <p>Success! Your value {{ $value }}%</p>
             </div>
         @endif
 

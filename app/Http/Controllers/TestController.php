@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Test;
 use Illuminate\Http\Request;
 
 class TestController extends Controller
@@ -31,12 +32,36 @@ class TestController extends Controller
 
         $this->validate($request, $rules, $messages);
 
-        // тут будет верификация данных и выставление оценки
+        $answers = [
+            'answer1' => '2',
+            'answer2' => '6',
+            'answer32' => '1',
+            'answer33' => '1'
+        ];
+
+        $value = $this->verify($request, $answers);
 
         // занесение оценки в базу данных
 
         return view('test', [
-            'value' => 5 // провем результата в виде оценки
+            'value' => $value // провем результата в виде оценки
         ]);
     }
+
+    protected function verify(Request $request, $answers)
+    {
+        $eq = 0;
+        $questions = 0;
+        $data = $request->all();
+
+        $answ_keys = array_keys($answers);
+        foreach($answ_keys as $answ_key) {
+            $questions++;
+            if(array_key_exists($answ_key, $data))
+                if($data[$answ_key] == $answers[$answ_key]) $eq++;
+        }
+
+        return ($eq / $questions) * 100; // %
+    }
+
 }
