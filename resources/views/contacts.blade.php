@@ -72,6 +72,10 @@
                     @endforeach
                 </ul>
             </div>
+        @elseif(isset($success))
+            <div class="alert alert-success">
+                <p>Success! Your value</p>
+            </div>
         @endif
 
         <div class='center'>

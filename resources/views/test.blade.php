@@ -26,6 +26,10 @@
                     @endforeach
                 </ul>
             </div>
+        @elseif(isset($value))
+            <div class="alert alert-success">
+                <p>Success! Your value {{ $value }}</p>
+            </div>
         @endif
 
         <form id="form" class="form-horizontal" role="form" method="post">

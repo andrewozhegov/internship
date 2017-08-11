@@ -22,5 +22,9 @@ class ContactsController extends Controller
         ];
 
         $this->validate($request, $rules);
+
+        return view('contacts', [
+            'success' => '1'
+        ]);
     }
 }
