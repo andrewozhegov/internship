@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Test;
+use App\Value;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TestController extends Controller
 {
@@ -39,12 +40,16 @@ class TestController extends Controller
             'answer33' => '1'
         ];
 
-        $value = $this->verify($request, $answers);
+        $val = $this->verify($request, $answers);
 
         // занесение оценки в базу данных
+        if ($val > 0) {
+            $value = Value::find($val);
+            Auth::user()->getValues()->save($value);
+        }
 
         return view('test', [
-            'value' => $value // провем результата в виде оценки
+            'value' => $val
         ]);
     }
 
@@ -61,7 +66,9 @@ class TestController extends Controller
                 if($data[$answ_key] == $answers[$answ_key]) $eq++;
         }
 
-        return ($eq / $questions) * 100; // %
+        $value = round(($eq * 5) / $questions); // оценка
+
+        return $value;
     }
 
 }

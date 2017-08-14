@@ -13,6 +13,6 @@ class Value extends Model
     }
 
     public function getUsers () {
-        return $this->belongsToMany('App\User', 'tests', 'value_id', 'user_id');
+        return $this->belongsToMany('App\User', 'tests', 'value_id', 'user_id')->withTimestamps();;
     }
 }

@@ -27,9 +27,15 @@
                 </ul>
             </div>
         @elseif(isset($value))
-            <div class="alert alert-success">
-                <p>Success! Your value {{ $value }}%</p>
-            </div>
+            @if($value > 0)
+                <div class="alert alert-success">
+                    <p>Success! Your value {{ $value }}</p>
+                </div>
+            @elseif($value == 0)
+                <div class="alert alert-danger">
+                    <p>Fail! Your value 'F'</p>
+                </div>
+            @endif
         @endif
 
         <form id="form" class="form-horizontal" role="form" method="post">

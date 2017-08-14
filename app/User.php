@@ -34,10 +34,10 @@ class User extends Authenticatable
     }
 
     public function getRole () {
-        return $this->belongsTo('App\Role', 'id', 'role_id');
+        return $this->belongsTo('App\Role', 'role_id', 'id');
     }
 
     public function getValues () {
-        return $this->belongsToMany('App\Value', 'tests', 'user_id', 'value_id');
+        return $this->belongsToMany('App\Value', 'tests', 'user_id', 'value_id')->withTimestamps();;
     }
 }
