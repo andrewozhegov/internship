@@ -17,15 +17,8 @@
 
 @section('content')
     <section class="content">
-        <ul>
-            <li><a href="/admin/">admin panel</a></li>
-            <li><a href="/admim/interests_edit">edit interests</a></li>
-            <li><a href="/admin/photos_edit">edit photos</a></li>
-            <li><a href="/admin/blog_edit">edit blog</a></li>
-            <li><a href="/admin/test_book">test book</a></li>
-            <li><a href="/admin/visitors">visitors</a></li>
-        </ul>
-
+        <h1>РЕЗУЛЬТАТЫ ТЕСТА</h1>
+        @include('admin.default.admin-nav')
         <div class="container">
             <a class="btn btn-default btn-primary" href="/test" role="button">Назад</a>
             <p class="lead">Ответы студентов на тест по дисциплине: "Общая Математика" </p>

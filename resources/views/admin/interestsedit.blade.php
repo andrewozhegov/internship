@@ -11,17 +11,11 @@
     <script type="text/javascript" src="{{ asset('/js/clock.js') }}"></script>
 @endsection
 
-@section('logo', 'ANDREW EMPTINESS')
+@section('logo', 'INTERESTS EDIT')
 
 @section('content')
     <section class="content">
-        <ul>
-            <li><a href="/admin/">admin panel</a></li>
-            <li><a href="/admim/interests_edit">edit interests</a></li>
-            <li><a href="/admin/photos_edit">edit photos</a></li>
-            <li><a href="/admin/blog_edit">edit blog</a></li>
-            <li><a href="/admin/test_book">test book</a></li>
-            <li><a href="/admin/visitors">visitors</a></li>
-        </ul>
+        <h1>РЕДАКТОР ИНТЕРЕСОВ</h1>
+        @include('admin.default.admin-nav')
     </section>
 @endsection
