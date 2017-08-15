@@ -9,9 +9,20 @@ use App\Blog;
 
 class BlogEditController extends Controller
 {
-    public function show($status = null)
+    public function show($id = null, $status = null)
     {
-        $blogs = Blog::all();
+        if ($id != null) {
+            $status = 'update';
+            $blog = Blog::find($id);
+            $blogs = [
+                'title' => $blog->title,
+                'image' => $blog->image(),
+                'text' => $blog->text
+            ];
+        } else {
+            $status = 'test';
+            $blogs = Blog::all();
+        }
 
         return view('admin.blogedit',[
             'status' => $status,
@@ -21,35 +32,57 @@ class BlogEditController extends Controller
 
     public function add(Request $request)
     {
-
         $this->validate($request, [
             'title' => 'required',
             'image' => 'image',
             'text' => 'required'
         ]);
-
         $title = $request->get('title');
         $image = 'blog_img/'.$request->file('blog-img')->getClientOriginalName();
         $text = $request->get('text');
 
-        if (Storage::put($image, file_get_contents($request->file('blog-img')->getRealPath()))) {
+        if (Storage::put($image, file_get_contents($request->file('blog-img')->getRealPath())))
+        {
             Blog::create([
                 'title' => $title,
                 'image' => $image,
                 'text' => $text
             ]);
         }
+        return $this->show();
+    }
 
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'title' => 'required',
+            'image' => 'image',
+            'text' => 'required'
+        ]);
+        $title = $request->get('title');
+        $image = 'blog_img/'.$request->file('blog-img')->getClientOriginalName();
+        $text = $request->get('text');
+
+        $blog = Blog::find($id);
+
+        if (Storage::delete($blog->image))
+        {
+            if (Storage::put($image, file_get_contents($request->file('blog-img')->getRealPath())))
+            {
+                $blog->update([
+                    'title' => $title,
+                    'image' => $image,
+                    'text' => $text
+                ]);
+            }
+        }
         return $this->show();
     }
 
     public function delete($id)
     {
-
         $blog = Blog::find($id);
-
         Storage::delete($blog->image);
-
         $blog->delete();
 
         return $this->show();

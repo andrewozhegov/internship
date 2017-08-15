@@ -30,6 +30,43 @@
             </div>
         @endif
 
+        @if (($status == 'update') && (isset($blogs)))
+            <div class="container">
+                <p class="lead">Изменить запись</p>
+                <form enctype="multipart/form-data" class="form-horizontal" method="post" id="form">
+                    {{ csrf_field() }}
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <label for="form_topic">Тема сообщения</label>
+                            <input type="text" class="form-control" name="title" value="{{ $blogs['title'] }}" id="form_topic" placeholder="Тема сообщения">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <label for="form_photo">Фотография</label>
+                            <img src="{{ asset($blogs['image']) }}" alt="">
+                            <input type="file" accept=".png,.jpeg,.jpg" name="blog-img" id="form_photo">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <label for="form_message">Сообщение</label>
+                            <textarea type="" class="form-control" name="text"  id="form_message" rows="3"
+                                      placeholder="Сообщение">{{ $blogs['text'] }}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-8">
+                            <input id="submit" class="form-control btn btn-block btn-primary"  type="submit" value="Отправить">
+                        </div>
+                        <div class="col-md-4">
+                            <input class="form-control btn btn-block btn-default" type="reset" value="Очистить">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        @else
+
         @if(count($blogs) > 0)
         <div class="container">
             <p class="lead">Существующие блоги</p>
@@ -49,7 +86,7 @@
                             <th>{{ $blog->title }}</th>
                             <th>{{ $blog->created_at }}</th>
                             <th>
-                                <a href="#">Изменить</a>
+                                <a href="/admin/blogedit/{{ $blog->id }}">Изменить</a>
                             </th>
                             <th>
                                 <a href="/admin/blogedit/del/{{ $blog->id }}">Удалить</a>
@@ -96,4 +133,5 @@
             </form>
         </div>
     </section>
+    @endif
 @endsection

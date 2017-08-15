@@ -52,30 +52,28 @@ Route::group(['middleware'=>'web'], function() {
 
         Route::get('/',                   ['as'=>'admin', 'uses'=>'AdminController@show']);
 
-        Route::get('/blogedit',          ['as'=>'blog_edit', 'uses'=>'BlogEditController@show']);
-        Route::post('/blogedit',         ['as'=>'blog_edit_send', 'uses'=>'BlogEditController@add']);
+        Route::get('/blogedit/{id?}',     ['as'=>'blog_edit', 'uses'=>'BlogEditController@show']);
+        Route::post('/blogedit',          ['as'=>'blog_edit_send', 'uses'=>'BlogEditController@add']);
+        Route::post('/blogedit/{id}',     ['as'=>'blog_edit_update', 'uses'=>'BlogEditController@update']);
         Route::get('/blogedit/del/{id}',  ['as'=>'blog_edit_delete', 'uses'=>'BlogEditController@delete']);
 
-        //Route::controller('/blog_edit', 'BlogEditController'); // реализовать потом по примеру
-
-        Route::get('/testbook',          ['as'=>'test_book', 'uses'=>'TestBookController@show']);
-        Route::delete('/testbook',       ['as'=>'test_book_delete', 'uses'=>'TestBookController@delete']);
+        Route::get('/testbook',           ['as'=>'test_book', 'uses'=>'TestBookController@show']);
+        Route::get('/testbook/del/{id}',  ['as'=>'test_book_delete', 'uses'=>'TestBookController@delete']);
 
         Route::get('/visitors',           ['as'=>'visitors', 'uses'=>'VisitorsController@show']);
-        Route::delete('/visitors',        ['as'=>'visitors_delete', 'uses'=>'VisitorsController@delete']);
+        Route::get('/visitors/del/{id}',  ['as'=>'visitors_delete', 'uses'=>'VisitorsController@delete']);
 
-        Route::get('/interestsedit',     ['as'=>'interests_edit', 'uses'=>'InterestsEditController@show']);
-        Route::post('/interestsedit',    ['as'=>'interests_edit_add', 'uses'=>'InterestsEditController@add']);
-        Route::delete('/interestsedit',  ['as'=>'interests_edit_delete', 'uses'=>'InterestsEditController@delete']);
+        Route::get('/interestsedit',      ['as'=>'interests_edit', 'uses'=>'InterestsEditController@show']);
+        Route::post('/interestsedit',     ['as'=>'interests_edit_add', 'uses'=>'InterestsEditController@add']);
+        Route::post('/interestsedit/{id}', ['as'=>'interests_edit_update', 'uses'=>'InterestsEditController@update']);
+        Route::get('/interestsedit/del/{item}/{id}',  ['as'=>'interests_edit_delete', 'uses'=>'InterestsEditController@delete']);
 
-        Route::get('/photosedit',        ['as'=>'photos_edit', 'uses'=>'PhotosEditController@show']);
-        Route::post('/photosedit',       ['as'=>'photos_edit_add', 'uses'=>'PhotosEditController@add']);
-        Route::delete('/photosedit',     ['as'=>'photos_edit_delete', 'uses'=>'PhotosEditController@delete']);
+        Route::get('/photosedit',         ['as'=>'photos_edit', 'uses'=>'PhotosEditController@show']);
+        Route::post('/photosedit',        ['as'=>'photos_edit_add', 'uses'=>'PhotosEditController@add']);
+        Route::get('/photosedit/del/{id}', ['as'=>'photos_edit_delete', 'uses'=>'PhotosEditController@delete']);
 
     });
 
 });
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
