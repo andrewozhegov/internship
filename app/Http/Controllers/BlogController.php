@@ -4,11 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Blog;
+
 class BlogController extends Controller
 {
-    public function show()
+    public function show($status = null)
     {
-        return view('blog');
+        $blogs = Blog::all();
+
+        return view('blog',[
+            'status' => $status,
+            'blogs' => $blogs
+        ]);
     }
 
     public function comment()

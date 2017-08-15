@@ -3,21 +3,55 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
+use App\Blog;
 
 class BlogEditController extends Controller
 {
-    public function show()
+    public function show($status = null)
     {
-        return view('admin.blogedit');
+        $blogs = Blog::all();
+
+        return view('admin.blogedit',[
+            'status' => $status,
+            'blogs' => $blogs
+        ]);
     }
 
-    public function add()
+    public function add(Request $request)
     {
-        //return view('');
+
+        $this->validate($request, [
+            'title' => 'required',
+            'image' => 'image',
+            'text' => 'required'
+        ]);
+
+        $title = $request->get('title');
+        $image = 'blog_img/'.$request->file('blog-img')->getClientOriginalName();
+        $text = $request->get('text');
+
+        if (Storage::put($image, file_get_contents($request->file('blog-img')->getRealPath()))) {
+            Blog::create([
+                'title' => $title,
+                'image' => $image,
+                'text' => $text
+            ]);
+        }
+
+        return $this->show();
     }
 
-    public function delete()
+    public function delete($id)
     {
-        //return view('');
+
+        $blog = Blog::find($id);
+
+        Storage::delete($blog->image);
+
+        $blog->delete();
+
+        return $this->show();
     }
 }
