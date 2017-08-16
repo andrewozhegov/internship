@@ -40,4 +40,10 @@ class User extends Authenticatable
     public function getValues () {
         return $this->belongsToMany('App\Value', 'tests', 'user_id', 'value_id')->withTimestamps();;
     }
+
+    public function getComments () {
+        return $this->hasMany('App\Comment', 'user_id', 'id');
+    }
+
+
 }

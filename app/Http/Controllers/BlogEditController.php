@@ -19,10 +19,7 @@ class BlogEditController extends Controller
                 'image' => $blog->image(),
                 'text' => $blog->text
             ];
-        } else {
-            $status = 'test';
-            $blogs = Blog::all();
-        }
+        } else $blogs = Blog::all();
 
         return view('admin.blogedit',[
             'status' => $status,
@@ -49,7 +46,7 @@ class BlogEditController extends Controller
                 'text' => $text
             ]);
         }
-        return $this->show();
+        return redirect('blog_edit');
     }
 
     public function update(Request $request, $id)
@@ -76,7 +73,7 @@ class BlogEditController extends Controller
                 ]);
             }
         }
-        return $this->show();
+        return redirect('blog_edit');
     }
 
     public function delete($id)
@@ -85,6 +82,6 @@ class BlogEditController extends Controller
         Storage::delete($blog->image);
         $blog->delete();
 
-        return $this->show();
+        return redirect('blog_edit');
     }
 }

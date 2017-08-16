@@ -41,7 +41,7 @@ Route::group(['middleware'=>'web'], function() {
         Route::post('/test',        ['as'=>'test_send', 'uses'=>'TestController@send']);
 
         Route::post('/blog',        ['as'=>'blog_comment', 'uses'=>'BlogController@comment']);
-        Route::delete('/blog',      ['as'=>'blog_delete_comment', 'uses'=>'BlogController@deleteComment']);
+        Route::get('/blog/del_com/{id}',      ['as'=>'blog_delete_comment', 'uses'=>'BlogController@deleteComment']);
 
     });
 
