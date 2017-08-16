@@ -29,12 +29,15 @@
                     <h4>{{ $comment->getUser->name }}</h4>
                     <p>{{ $comment->text }}</p>
                     <h6>{{ $comment->created_at }}</h6>
-                    @if ($comment->getUser->id == Auth::user()->id)
-                        <a href="/blog/del_com/{{ $comment->id }}">Удалить Комментарий</a>
+                    @if(Auth::check())
+                        @if ($comment->getUser->id == Auth::user()->id)
+                            <a href="/blog/del_com/{{ $comment->id }}">Удалить Комментарий</a>
+                        @endif
                     @endif
                     <p>____</p>
                 @endforeach
                 <p>_______________________________________________________</p>
+                @if(Auth::check())
                 <h3>Оставить комментарий</h3>
                     <form enctype="multipart/form-data" class="form-horizontal" method="post" id="form">
                         {{ csrf_field() }}
@@ -55,6 +58,10 @@
                             </div>
                         </div>
                     </form>
+                @else
+                    <h6><a href="/login">Войдите или Заругистрируйтесь,</a> чобы оставить комментарий</h6>
+
+                @endif
             @endforeach
         </div>
     @endif

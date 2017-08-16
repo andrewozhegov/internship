@@ -35,7 +35,9 @@ class BlogController extends Controller
 
     public function deleteComment($id)
     {
-        Comment::find($id)->delete();
+        $comment = Comment::find($id);
+
+        if (Auth::user()->id == $comment->getUser->id) $comment->delete();
 
         return redirect('blog');
     }

@@ -46,7 +46,8 @@ class BlogEditController extends Controller
                 'text' => $text
             ]);
         }
-        return redirect('blog_edit');
+
+        return redirect('admin/blogedit');
     }
 
     public function update(Request $request, $id)
@@ -73,15 +74,17 @@ class BlogEditController extends Controller
                 ]);
             }
         }
-        return redirect('blog_edit');
+
+        return redirect('admin/blogedit');
     }
 
     public function delete($id)
     {
         $blog = Blog::find($id);
         Storage::delete($blog->image);
+        $blog->getComments()->delete();
         $blog->delete();
 
-        return redirect('blog_edit');
+        return redirect('admin/blogedit');
     }
 }
