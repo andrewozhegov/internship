@@ -24,7 +24,7 @@
         <div class="gallery-box">
             <div class="view">
                 <div class="big-image">
-                    <img title="{{ $photos[0]->name }}" src="{{ asset($photos[0]->image) }}" alt="" />
+                    <img title="{{ $photos[0]->name }}" src="{{ asset($photos[0]->image()) }}" alt="" />
                 </div>
                 <a href="#" class="prev"></a>
                 <a href="#" class="next"></a>
@@ -32,13 +32,13 @@
             <div class="thumbnails">
 
                 @foreach($photos as $photo)
-                    @if($photo['id'] == 1)
+                    @if($photo->id == 1)
                         <a href="#" class="active">
-                            <img title="{{ $photo['name'] }}" src="{{ asset($photo['mic']) }}" alt="" />
+                            <img title="{{ $photo->name }}" src="{{ asset($photo->mic()) }}" alt="" />
                         </a>
                     @else
                         <a href="#">
-                            <img title="{{ $photo['name'] }}" src="{{ asset($photo['mic']) }}" alt="" />
+                            <img title="{{ $photo->name }}" src="{{ asset($photo->mic()) }}" alt="" />
                         </a>
                     @endif
                 @endforeach

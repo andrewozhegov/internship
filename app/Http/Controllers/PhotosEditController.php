@@ -3,21 +3,60 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
+use App\Photo;
 
 class PhotosEditController extends Controller
 {
-    public function show()
+
+    public function show($status = null)
     {
-        return view('admin.photosedit');
+        $photos = Photo::all();
+
+        return view('admin.photosedit', [
+            'status' => $status,
+            'photos' => $photos
+        ]);
     }
 
-    public function add()
+    public function add(Request $request)
     {
-        //return view('');
+        $this->validate($request, [
+            'name' => 'required',
+            'image' => 'file|image',
+            'mic' => 'file|image',
+            'annotation' => 'required'
+        ]);
+
+        $name = $request->get('name');
+        $image = 'photos/'.$request->file('image')->getClientOriginalName();
+        $mic = 'photos/mic/'.$request->file('mic')->getClientOriginalName();
+        $annotation = $request->get('annotation');
+
+        if (Storage::put($image, file_get_contents($request->file('image')->getRealPath())))
+        {
+            if (Storage::put($mic, file_get_contents($request->file('mic')->getRealPath())))
+            {
+                Photo::create([
+                    'name' => $name,
+                    'image' => $image,
+                    'mic' => $mic,
+                    'annotation' => $annotation
+                ]);
+            } else Storage::delete($image);
+        }
+
+        return redirect('admin/photosedit');
     }
 
-    public function delete()
+    public function delete($id)
     {
-        //return view('');
+        $photo = Photo::find($id);
+        Storage::delete($photo->image);
+        Storage::delete($photo->mic);
+        $photo->delete();
+
+        return redirect('admin/photosedit');
     }
 }

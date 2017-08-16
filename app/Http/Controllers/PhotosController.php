@@ -8,13 +8,13 @@ use App\Photo;
 
 class PhotosController extends Controller
 {
-
-    public function show()
+    public function show($status = null)
     {
         $photos = Photo::all();
 
-        return view('photos', array(
+        return view('photos', [
+            'status' => $status,
             'photos' => $photos
-        ));
+        ]);
     }
 }
