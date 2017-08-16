@@ -10,8 +10,6 @@ class Test extends Model
 
     public $timestamps = true;
 
-    protected $dateFormat = 'U';
-
     public function getUser () {
         return $this->belongsTo('App\User', 'user_id', 'id');
     }

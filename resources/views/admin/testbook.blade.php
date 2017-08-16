@@ -19,37 +19,40 @@
     <section class="content">
         <h1>РЕЗУЛЬТАТЫ ТЕСТА</h1>
         @include('admin.default.admin-nav')
+
+        @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <div class="container">
-            <a class="btn btn-default btn-primary" href="/test" role="button">Назад</a>
-            <p class="lead">Ответы студентов на тест по дисциплине: "Общая Математика" </p>
+            <p class="lead">Результаты теста</p>
             <table class="table table-bordered table-responsive table-hover">
                 <thead>
                 <tr>
-                    <th>№</th>
-                    <th>Дата</th>
-                    <th>Ф.И.О.</th>
-                    <th>Ответ 1</th>
-                    <th>Ответ 2</th>
-                    <th>Ответ 3</th>
+                    <th>ID</th>
+                    <th>Data</th>
+                    <th>User</th>
+                    <th>Value</th>
                 </tr>
                 </thead>
                 <tbody>
-                <?php
-                /*$number = 1;
-                foreach($args['models'] as $model) {
-                    echo '<tr>';
-                    echo '<td>' . $number++ . '</td>';
-                    echo '<td>' . $model->DatePassage . '</td>';
-                    echo '<td>' . $model->Fio . '</td>';
-                    echo '<td>' . $model->Answer1 . '</td>';
-                    echo '<td>' . $model->Answer2 . '</td>';
-                    echo '<td>' . $model->Answer3 . '</td>';
-                    echo '</tr>';
-                }*/
-                ?>
+                @foreach($tests as $test)
+                    <tr>
+                        <th>{{ $test->id }}</th>
+                        <th>{{ $test->created_at }}</th>
+                        <th>{{ $test->getUser->name }}</th>
+                        <th>{{ $test->getValue->name }}</th>
+                        <th><a href="/admin/testbook/del/{{ $test->id }}">Delete</a></th>
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>
-
     </section>
 @endsection
