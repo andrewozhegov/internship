@@ -63,9 +63,9 @@ Route::group(['middleware'=>'web'], function() {
         Route::get('/visitors',           ['as'=>'visitors', 'uses'=>'VisitorsController@show']);
         Route::get('/visitors/del/{id}',  ['as'=>'visitors_delete', 'uses'=>'VisitorsController@delete']);
 
-        Route::get('/interestsedit',      ['as'=>'interests_edit', 'uses'=>'InterestsEditController@show']);
+        Route::get('/interestsedit/{item?}/{id?}',      ['as'=>'interests_edit', 'uses'=>'InterestsEditController@show']);
         Route::post('/interestsedit',     ['as'=>'interests_edit_add', 'uses'=>'InterestsEditController@add']);
-        Route::post('/interestsedit/{id}', ['as'=>'interests_edit_update', 'uses'=>'InterestsEditController@update']);
+        Route::post('/interestsedit/{item}/{id}', ['as'=>'interests_edit_update', 'uses'=>'InterestsEditController@update']);
         Route::get('/interestsedit/del/{item}/{id}',  ['as'=>'interests_edit_delete', 'uses'=>'InterestsEditController@delete']);
 
         Route::get('/photosedit',         ['as'=>'photos_edit', 'uses'=>'PhotosEditController@show']);
@@ -78,6 +78,6 @@ Route::group(['middleware'=>'web'], function() {
 
 Auth::routes();
 
-// tests visitors interests - реализовать управление из панель админа и хранение файлов
+// visitors interests - реализовать управление из панель админа и хранение файлов
 // закрыть доступ к панели админа (Gate, авторизация)
 // кнопка входа (или имя аутентифицированного польз) на всех страницах с выпадающим меню (Панель администратра, Профиль, Выйти и тд)

@@ -12,18 +12,10 @@ class InterestsController extends Controller
 {
     public function show()
     {
-        // Получим все записи из таблиц
-
-        $books = Book::all();
-        $films = Film::all();
-        $bands = Band::all();
-
-        // Передаем виду массивы с данными
-
-        return view('interests', array(
-            'books' => $books,
-            'films' => $films,
-            'bands' => $bands
-        ));
+        return view('interests', [
+            'books' => Book::all(),
+            'films' => Film::all(),
+            'bands' => Band::all()
+        ]);
     }
 }

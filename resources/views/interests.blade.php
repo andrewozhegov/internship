@@ -30,7 +30,7 @@
                     <table class="record">
                         <tr>
                             <th rowspan="4" width="25%">
-                                <img class="poster" src="{{ asset($book['poster']) }}" alt="" />
+                                <img class="poster" src="{{ asset($book->poster()) }}" alt="" />
                             </th>
                             <th><h1>{{ $book['name'] }}</h1></th>
                         </tr>
@@ -50,13 +50,12 @@
 
         <section>
             <h3><a name="films">● фильмы ●</a></h3>
-
             @if(isset($films))
                 @foreach($films as $film)
                     <table class="record">
                         <tr>
                             <th rowspan="4" width="25%">
-                                <img class="poster" src="{{ asset($film['poster']) }}" alt="" />
+                                <img class="poster" src="{{ asset($film->poster()) }}" alt="" />
                             </th>
                             <th><h1>{{ $film['name'] }}</h1></th>
                         </tr>
@@ -82,7 +81,7 @@
                     <table class="record">
                         <tr>
                             <th rowspan="4" width="30%">
-                                <img class="poster-m" src="{{ asset($band['poster']) }}" alt="" />
+                                <img class="poster-m" src="{{ asset($band->poster()) }}" alt="" />
                             </th>
                             <th><h1>{{ $band['name'] }}</h1></th>
                         </tr>

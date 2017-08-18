@@ -31,7 +31,7 @@ class BlogEditController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
-            'image' => 'image',
+            'image' => 'file|image',
             'text' => 'required'
         ]);
         $title = $request->get('title');
