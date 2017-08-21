@@ -21,50 +21,21 @@ class InterestsEditController extends Controller
                 {
                     $status = 'update';
                     $films = $bands = null;
-                    $book = Book::find($id);
-                    $books = [
-                        'name' => $book->name,
-                        'poster' => $book->poster(),
-                        'author' => $book->author,
-                        'year' => $book->year,
-                        'livelib' => $book->livelib,
-                        'annotation' => $book->annotation
-                    ];
+                    $books = Book::find($id);
                     break;
                 }
                 case 'film':
                 {
                     $status = 'update';
                     $books = $bands = null;
-                    $film = Film::find($id);
-                    $films = [
-                        'name' => $film->name,
-                        'poster' => $film->poster(),
-                        'genre' => $film->genre,
-                        'year' => $film->year,
-                        'country' => $film->country,
-                        'kinopoisk' => $film->kinopoisk,
-                        'annotation' => $film->annotation
-                    ];
+                    $films = Film::find($id);
                     break;
                 }
                 case 'band':
                 {
                     $status = 'update';
                     $books = $films = null;
-                    $band = Film::find($id);
-                    $bands = [
-                        'name' => $band->name,
-                        'poster' => $band->poster(),
-                        'genre' => $band->genre,
-                        'year' => $band->year,
-                        'country' => $band->country,
-                        'lastfm' => $band->lastfm,
-                        'yam' => $band->yam,
-                        'instagram' => $band->instagram,
-                        'youtube' => $band->youtube,
-                        'annotation' => $band->annotation
-                    ];
+                    $bands = Band::find($id);
                     break;
                 }
             }
@@ -118,6 +89,7 @@ class InterestsEditController extends Controller
                         'annotation' => $annotation
                     ]);
                 }
+                break;
             }
             case 'film':
             {
@@ -141,7 +113,7 @@ class InterestsEditController extends Controller
 
                 if (Storage::put($poster, file_get_contents($request->file('film-img')->getRealPath())))
                 {
-                    Book::create([
+                    Film::create([
                         'name' => $name,
                         'poster' => $poster,
                         'genre' => $genre,
@@ -151,6 +123,7 @@ class InterestsEditController extends Controller
                         'annotation' => $annotation
                     ]);
                 }
+                break;
             }
             case 'band':
             {
@@ -168,7 +141,7 @@ class InterestsEditController extends Controller
                 ]);
 
                 $name = $request->get('name');
-                $poster = 'band_img/'.$request->file('film-img')->getClientOriginalName();
+                $poster = 'band_img/'.$request->file('band-img')->getClientOriginalName();
                 $genre = $request->get('genre');
                 $year = $request->get('year');
                 $country = $request->get('country');
@@ -180,7 +153,7 @@ class InterestsEditController extends Controller
 
                 if (Storage::put($poster, file_get_contents($request->file('band-img')->getRealPath())))
                 {
-                    Book::create([
+                    Band::create([
                         'name' => $name,
                         'poster' => $poster,
                         'genre' => $genre,
@@ -193,21 +166,144 @@ class InterestsEditController extends Controller
                         'annotation' => $annotation
                     ]);
                 }
+                break;
             }
         }
         return redirect('admin/interestsedit');
     }
 
-    public function update(Request $request, $item, $id)
+    public function update(Request $request, $id)
     {
-        // TODO: update method
+        switch($request->get('item'))
+        {
+            case 'book':
+            {
+                $this->validate($request, [
+                    'name' => 'required',
+                    'poster' => 'file|image',
+                    'author' => 'required',
+                    'year' => 'required|integer',
+                    'livelib' => 'required|url',
+                    'annotation' => 'required'
+                ]);
+
+                $name = $request->get('name');
+                $poster = 'book_img/'.$request->file('book-img')->getClientOriginalName();
+                $author = $request->get('author');
+                $year = $request->get('year');
+                $livelib = $request->get('livelib');
+                $annotation = $request->get('annotation');
+
+                $book = Book::find($id);
+                $poster_old = $book->poster;
+
+                if (Storage::put($poster, file_get_contents($request->file('book-img')->getRealPath())))
+                {
+                    Book::create([
+                        'name' => $name,
+                        'poster' => $poster,
+                        'author' => $author,
+                        'year' => $year,
+                        'livelib' => $livelib,
+                        'annotation' => $annotation
+                    ]);
+                    Storage::delete($poster_old);
+                }
+                break;
+            }
+            case 'film':
+            {
+                $this->validate($request, [
+                    'name' => 'required',
+                    'poster' => 'file|image',
+                    'genre' => 'required',
+                    'year' => 'required|integer',
+                    'country' => 'required',
+                    'kinopoisk' => 'required|url',
+                    'annotation' => 'required'
+                ]);
+
+                $name = $request->get('name');
+                $poster = 'film_img/'.$request->file('film-img')->getClientOriginalName();
+                $genre = $request->get('genre');
+                $year = $request->get('year');
+                $country = $request->get('country');
+                $kinopoisk = $request->get('kinopoisk');
+                $annotation = $request->get('annotation');
+
+                $film = Film::find($id);
+                $poster_old = $film->poster;
+
+                if (Storage::put($poster, file_get_contents($request->file('film-img')->getRealPath())))
+                {
+                    Film::create([
+                        'name' => $name,
+                        'poster' => $poster,
+                        'genre' => $genre,
+                        'year' => $year,
+                        'country' => $country,
+                        'kinopoisk' => $kinopoisk,
+                        'annotation' => $annotation
+                    ]);
+                    Storage::delete($poster_old);
+                }
+                break;
+            }
+            case 'band':
+            {
+                $this->validate($request, [
+                    'name' => 'required',
+                    'poster' => 'file|image',
+                    'genre' => 'required',
+                    'year' => 'required|integer',
+                    'country' => 'required',
+                    'lastfm' => 'required|url',
+                    'yam' => 'required|url',
+                    'instagram' => 'required|url',
+                    'youtube' => 'required|url',
+                    'annotation' => 'required'
+                ]);
+
+                $name = $request->get('name');
+                $poster = 'band_img/'.$request->file('band-img')->getClientOriginalName();
+                $genre = $request->get('genre');
+                $year = $request->get('year');
+                $country = $request->get('country');
+                $lastfm = $request->get('lastfm');
+                $yam = $request->get('yam');
+                $instagram = $request->get('instagram');
+                $youtube = $request->get('youtube');
+                $annotation = $request->get('annotation');
+
+                $band = Band::find($id);
+                $poster_old = $band->poster;
+
+                if (Storage::put($poster, file_get_contents($request->file('band-img')->getRealPath())))
+                {
+                    Band::create([
+                        'name' => $name,
+                        'poster' => $poster,
+                        'genre' => $genre,
+                        'year' => $year,
+                        'country' => $country,
+                        'lastfm' => $lastfm,
+                        'yam' => $yam,
+                        'instagram' => $instagram,
+                        'youtube' => $youtube,
+                        'annotation' => $annotation
+                    ]);
+                    Storage::delete($poster_old);
+                }
+                break;
+            }
+        }
 
         return redirect('admin/interestsedit');
     }
 
     public function delete($item, $id)
     {
-        // TODO: sometimes i try to use dependency injection here
+        // TODO: sometimes i realize dependency injection here
 
         switch ($item)
         {
