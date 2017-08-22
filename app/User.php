@@ -29,21 +29,28 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function getTests () {
+    public function getTests ()
+    {
         return $this->hasMany('App\Test', 'user_id', 'id');
     }
 
-    public function getRole () {
+    public function getRole ()
+    {
         return $this->belongsTo('App\Role', 'role_id', 'id');
     }
 
-    public function getValues () {
+    public function getValues ()
+    {
         return $this->belongsToMany('App\Value', 'tests', 'user_id', 'value_id')->withTimestamps();;
     }
 
-    public function getComments () {
+    public function getComments ()
+    {
         return $this->hasMany('App\Comment', 'user_id', 'id');
     }
 
-
+    public function getVisitor ()
+    {
+        return $this->hasOne('App\Visitor', 'user_id', 'id');
+    }
 }

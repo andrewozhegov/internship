@@ -199,7 +199,7 @@ class InterestsEditController extends Controller
 
                 if (Storage::put($poster, file_get_contents($request->file('book-img')->getRealPath())))
                 {
-                    Book::create([
+                    $book->update([
                         'name' => $name,
                         'poster' => $poster,
                         'author' => $author,
@@ -236,7 +236,7 @@ class InterestsEditController extends Controller
 
                 if (Storage::put($poster, file_get_contents($request->file('film-img')->getRealPath())))
                 {
-                    Film::create([
+                    $film->update([
                         'name' => $name,
                         'poster' => $poster,
                         'genre' => $genre,
@@ -280,7 +280,7 @@ class InterestsEditController extends Controller
 
                 if (Storage::put($poster, file_get_contents($request->file('band-img')->getRealPath())))
                 {
-                    Band::create([
+                    $band->update([
                         'name' => $name,
                         'poster' => $poster,
                         'genre' => $genre,

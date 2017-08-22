@@ -15,38 +15,35 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware'=>'web'], function() {
 
-    // simple routes
+    Route::group(['middleware'=>'stat'], function() {
 
-    Route::get('/',             ['as'=>'index', 'uses'=>'IndexController@show']);
+        Route::get('/',             ['as'=>'index', 'uses'=>'IndexController@show']); // S
 
-    Route::get('/aboutme',      ['as'=>'aboutme', 'uses'=>'AboutmeController@show']);
+        Route::get('/aboutme',      ['as'=>'aboutme', 'uses'=>'AboutmeController@show']); // S
 
-    Route::get('/interests',    ['as'=>'interests', 'uses'=>'InterestsController@show']);
+        Route::get('/interests',    ['as'=>'interests', 'uses'=>'InterestsController@show']); // S
 
-    Route::get('/study',        ['as'=>'study', 'uses'=>'StudyController@show']);
+        Route::get('/study',        ['as'=>'study', 'uses'=>'StudyController@show']); // S
 
-    Route::get('/photos',       ['as'=>'photos', 'uses'=>'PhotosController@show']);
+        Route::get('/photos',       ['as'=>'photos', 'uses'=>'PhotosController@show']); // S
 
+        Route::get('/contacts',     ['as'=>'contacts', 'uses'=>'ContactsController@show']); // S
 
-    // with simple forms
+        Route::get('/blog',         ['as'=>'blog', 'uses'=>'BlogController@show']); // S
 
-    Route::get('/contacts',     ['as'=>'contacts', 'uses'=>'ContactsController@show']);
-    Route::post('/contacts',    ['as'=>'contacts_send', 'uses'=>'ContactsController@send']);
+        Route::post('/contacts',    ['as'=>'contacts_send', 'uses'=>'ContactsController@send']);
 
-    Route::get('/blog',         ['as'=>'blog', 'uses'=>'BlogController@show']);
+    });
 
     Route::group(['middleware'=>'auth'], function() {
 
-        Route::get('/test',         ['as'=>'test', 'uses'=>'TestController@show']);
+        Route::get('/test',         ['middleware'=>'stat', 'as'=>'test', 'uses'=>'TestController@show']); // S
         Route::post('/test',        ['as'=>'test_send', 'uses'=>'TestController@send']);
 
         Route::post('/blog',        ['as'=>'blog_comment', 'uses'=>'BlogController@comment']);
         Route::get('/blog/del_com/{id}',      ['as'=>'blog_delete_comment', 'uses'=>'BlogController@deleteComment']);
 
     });
-
-
-    // admin panel
 
     Route::group(['prefix'=>"admin", 'middleware'=>'auth'], function() {
 

@@ -9,7 +9,7 @@ class TestBookController extends Controller
 {
     public function show($status = null)
     {
-        return view('admin.testbook',[
+        return view('admin.testbook', [
             'status' => $status,
             'tests' => Test::all()
         ]);

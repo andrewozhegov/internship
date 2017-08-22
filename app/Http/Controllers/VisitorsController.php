@@ -2,22 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Visitor;
 use Illuminate\Http\Request;
 
 class VisitorsController extends Controller
 {
     public function show()
     {
-        return view('admin.visitors');
+        return view('admin.visitors', [
+            'visitors' => Visitor::all()
+        ]);
     }
 
-    public function add()
+    public function delete($id)
     {
-        //return view('');
-    }
+        Visitor::find($id)->delete();
 
-    public function delete()
-    {
-        //return view('');
+        return redirect('admin/visitors');
     }
 }
