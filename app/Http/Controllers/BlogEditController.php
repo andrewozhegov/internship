@@ -11,6 +11,11 @@ class BlogEditController extends Controller
 {
     public function show($id = null, $status = null)
     {
+        if (Gate::denies('admin'))
+        {
+            return redirect('/');
+        }
+
         if ($id != null) {
             $status = 'update';
             $blog = Blog::find($id);
@@ -29,6 +34,11 @@ class BlogEditController extends Controller
 
     public function add(Request $request)
     {
+        if (Gate::denies('admin'))
+        {
+            return redirect('/');
+        }
+
         $this->validate($request, [
             'title' => 'required',
             'image' => 'file|image',
@@ -52,6 +62,11 @@ class BlogEditController extends Controller
 
     public function update(Request $request, $id)
     {
+        if (Gate::denies('admin'))
+        {
+            return redirect('/');
+        }
+
         $this->validate($request, [
             'title' => 'required',
             'image' => 'image',
@@ -80,6 +95,11 @@ class BlogEditController extends Controller
 
     public function delete($id)
     {
+        if (Gate::denies('admin'))
+        {
+            return redirect('/');
+        }
+
         $blog = Blog::find($id);
         Storage::delete($blog->image);
         $blog->getComments()->delete();

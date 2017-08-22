@@ -13,6 +13,11 @@ class InterestsEditController extends Controller
 {
     public function show($item = null, $id = null)
     {
+        if (Gate::denies('admin'))
+        {
+            return redirect('/');
+        }
+
         if (($id != null) && ($item != null))
         {
             switch ($item)
@@ -58,6 +63,11 @@ class InterestsEditController extends Controller
 
     public function add(Request $request)
     {
+        if (Gate::denies('admin'))
+        {
+            return redirect('/');
+        }
+
         switch ($request->get('item'))
         {
             case 'book':
@@ -174,6 +184,11 @@ class InterestsEditController extends Controller
 
     public function update(Request $request, $id)
     {
+        if (Gate::denies('admin'))
+        {
+            return redirect('/');
+        }
+
         switch($request->get('item'))
         {
             case 'book':
@@ -304,6 +319,11 @@ class InterestsEditController extends Controller
     public function delete($item, $id)
     {
         // TODO: sometimes i realize dependency injection here
+
+        if (Gate::denies('admin'))
+        {
+            return redirect('/');
+        }
 
         switch ($item)
         {

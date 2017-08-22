@@ -9,6 +9,11 @@ class TestBookController extends Controller
 {
     public function show($status = null)
     {
+        if (Gate::denies('admin'))
+        {
+            return redirect('/');
+        }
+
         return view('admin.testbook', [
             'status' => $status,
             'tests' => Test::all()
@@ -17,6 +22,11 @@ class TestBookController extends Controller
 
     public function delete($id)
     {
+        if (Gate::denies('admin'))
+        {
+            return redirect('/');
+        }
+
         Test::find($id)->delete();
 
         return redirect('admin/testbook');

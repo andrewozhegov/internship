@@ -12,6 +12,11 @@ class PhotosEditController extends Controller
 
     public function show($status = null)
     {
+        if (Gate::denies('admin'))
+        {
+            return redirect('/');
+        }
+
         $photos = Photo::all();
 
         return view('admin.photosedit', [
@@ -22,6 +27,11 @@ class PhotosEditController extends Controller
 
     public function add(Request $request)
     {
+        if (Gate::denies('admin'))
+        {
+            return redirect('/');
+        }
+
         $this->validate($request, [
             'name' => 'required',
             'image' => 'file|image',
@@ -52,6 +62,11 @@ class PhotosEditController extends Controller
 
     public function delete($id)
     {
+        if (Gate::denies('admin'))
+        {
+            return redirect('/');
+        }
+
         $photo = Photo::find($id);
         Storage::delete($photo->image);
         Storage::delete($photo->mic);

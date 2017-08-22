@@ -9,6 +9,11 @@ class VisitorsController extends Controller
 {
     public function show()
     {
+        if (Gate::denies('admin'))
+        {
+            return redirect('/');
+        }
+
         return view('admin.visitors', [
             'visitors' => Visitor::all()
         ]);
@@ -16,6 +21,11 @@ class VisitorsController extends Controller
 
     public function delete($id)
     {
+        if (Gate::denies('admin'))
+        {
+            return redirect('/');
+        }
+
         Visitor::find($id)->delete();
 
         return redirect('admin/visitors');
