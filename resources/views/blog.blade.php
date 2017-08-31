@@ -3,42 +3,34 @@
 @section('page_name', 'Blog')
 
 @section('css')
-    <link type="text/css" rel="stylesheet" href="{{ asset('/css/style.css') }}" />
 @endsection
 
 @section('js')
-    <script type="text/javascript" src="{{ asset('/js/mainfunc.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/js/clock.js') }}"></script>
 @endsection
 
-@section('logo', 'ANDREW EMPTINESS')
+@section('logo', 'BLOG')
 
 @section('content')
     @if(isset($blogs))
-        <div class="container">
-            <p class="lead">Блог</p>
+            <h3>Блог</h3>
             @foreach($blogs as $blog)
-                <h3>{{ $blog->id }}. {{ $blog->title }}</h3>
-                <p>{{ $blog->text }}</p>
+                <h4 class="text-left text-primary">{{ $blog->id }}. {{ $blog->title }}</h4>
                 <img src="{{ $blog->image() }}" alt="">
-                <p>Дата: {{ $blog->created_at }}</p>
-
-
-                {{-- Тут показать все комменты и предложить оставить свой --}}
+                <p class="text-left text-muted">{{ $blog->text }}</p>
+                <small class="text-right">Дата: {{ $blog->created_at }}</small>
+                <p class="lead">Комментарии</p>
                 @foreach($blog->getComments as $comment)
-                    <h4>{{ $comment->getUser->name }}</h4>
-                    <p>{{ $comment->text }}</p>
-                    <h6>{{ $comment->created_at }}</h6>
+                    <h4 class="text-left text-primary">{{ $comment->getUser->name }}</h4>
+                    <p class="text-left text-muted">{{ $comment->text }}</p>
+                    <small class="text-left">{{ $comment->created_at }}</small>
                     @if(Auth::check())
                         @if ($comment->getUser->id == Auth::user()->id)
-                            <a href="/blog/del_com/{{ $comment->id }}">Удалить Комментарий</a>
+                            <a href="/blog/del_com/{{ $comment->id }}">Удалить</a>
                         @endif
                     @endif
-                    <p>____</p>
                 @endforeach
-                <p>_______________________________________________________</p>
                 @if(Auth::check())
-                <h3>Оставить комментарий</h3>
+                <p class="lead">Оставить комментарий</p>
                     <form enctype="multipart/form-data" class="form-horizontal" method="post" id="form">
                         {{ csrf_field() }}
                         <input type="hidden" name="blog_id" value="{{ $blog->id }}">
@@ -60,9 +52,7 @@
                     </form>
                 @else
                     <h6><a href="/login">Войдите или Заругистрируйтесь,</a> чобы оставить комментарий</h6>
-
                 @endif
             @endforeach
-        </div>
-    @endif
+        @endif
 @endsection

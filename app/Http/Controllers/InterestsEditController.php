@@ -8,6 +8,7 @@ use App\Band;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Gate;
 
 class InterestsEditController extends Controller
 {
@@ -318,7 +319,7 @@ class InterestsEditController extends Controller
 
     public function delete($item, $id)
     {
-        // TODO: sometimes i realize dependency injection here
+        // TODO: sometimes i try to use dependency injection here
 
         if (Gate::denies('admin'))
         {

@@ -3,20 +3,15 @@
 @section('page_name', 'Test')
 
 @section('css')
-    <link type="text/css" rel="stylesheet" href="{{ asset('/css/style.css') }}" />
-    <link type="text/css" rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}" />
 @endsection
 
 @section('js')
-    <script type="text/javascript" src="{{ asset('/js/mainfunc.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/js/clock.js') }}"></script>
 @endsection
 
 @section('logo', 'TEST')
 
 @section('content')
-    <section class="content container">
-        <h1 style="margin: 50px"> Тест</h1>
+        <h1> Тест</h1>
 
         @if (count($errors) > 0)
             <div class="alert alert-danger">
@@ -103,5 +98,4 @@
                 </div>
             </div>
         </form>
-    </section>
 @endsection

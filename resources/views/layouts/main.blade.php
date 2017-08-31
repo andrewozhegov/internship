@@ -4,8 +4,12 @@
     <meta charset="utf-8">
     <title>LOGO - @yield('page_name')</title>
 
+    <link type="text/css" rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}" />
+    <link type="text/css" rel="stylesheet" href="{{ asset('/css/style.css') }}" />
     @yield('css')
 
+    <script type="text/javascript" src="{{ asset('/js/mainfunc.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/clock.js') }}"></script>
     @yield('js')
 
 </head>
@@ -41,7 +45,7 @@
         <div class="head-overlay">
             <div class="logo">
                 <h4>web-programming</h4>
-                <h3>HTML5 + CSS3 + JS + PHP</h3>
+                <h3>LARAVEL + BOOTSTRAP</h3>
                 <h1>@yield('logo', 'ANDREW EMPTINESS')</h1>
                 <h6>SEVGU</h6>
             </div>
@@ -49,18 +53,16 @@
     </section>
     @show
 
-    @section('content')
-        <section class="content">
-            <h1>СТРАНИЦА ШАБЛОНА ПРОЕКТИРОВАНИЯ</h1>
-        </section>
-    @show
+    <section class="content container">
+        @yield('content')
+    </section>
 </main>
 
 <footer>
     @section('footer')
         <div class="foot">
             <div class="currentDate" id="times"></div><br>
-            <p>SevGU, Andrew Emptiness © 2017</p>
+            <p ><a style="color: white" href="/admin">SevGU, Andrew Emptiness © 2017</a></p>
         </div>
     @show
 </footer>

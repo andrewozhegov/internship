@@ -3,18 +3,14 @@
 @section('page_name', 'Main page')
 
 @section('css')
-    <link type="text/css" rel="stylesheet" href="{{ asset('/css/style.css') }}" />
 @endsection
 
 @section('js')
-    <script type="text/javascript" src="{{ asset('/js/mainfunc.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/js/clock.js') }}"></script>
 @endsection
 
 @section('logo', 'ANDREW EMPTINESS')
 
 @section('content')
-    <section class="content">
         <h1>Основное содержимое сайта</h1>
         <div class="row anim">
             <a href="/interests" class="col11">
@@ -52,5 +48,4 @@
                 <img width="90px" src="{{ asset('/img/icos/test.ico') }}" alt="">
             </a>
         </div>
-    </section>
 @endsection

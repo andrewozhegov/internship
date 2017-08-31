@@ -3,19 +3,14 @@
 @section('page_name', 'Edit interests')
 
 @section('css')
-    <link type="text/css" rel="stylesheet" href="{{ asset('/css/style.css') }}" />
-    <link type="text/css" rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}" />
 @endsection
 
 @section('js')
-    <script type="text/javascript" src="{{ asset('/js/mainfunc.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/js/clock.js') }}"></script>
 @endsection
 
 @section('logo', 'INTERESTS EDIT')
 
 @section('content')
-    <section class="content">
         <h1>РЕДАКТОР ИНТЕРЕСОВ</h1>
         @include('admin.default.admin-nav')
 
@@ -31,8 +26,6 @@
 
         @if ($status == 'update')
             @if (count($books) == 1)
-
-                <div class="container">
                     <p class="lead">Изменить книгу</p>
                     <form enctype="multipart/form-data" class="form-horizontal" method="post" id="form">
                         {{ csrf_field() }}
@@ -83,10 +76,7 @@
                             </div>
                         </div>
                     </form>
-                </div>
             @elseif (count($films) == 1)
-
-                <div class="container">
                     <p class="lead">Изменить фильм</p>
                     <form enctype="multipart/form-data" class="form-horizontal" method="post" id="form">
                         {{ csrf_field() }}
@@ -143,11 +133,7 @@
                             </div>
                         </div>
                     </form>
-                </div>
-
             @elseif (count($bands) == 1)
-
-                <div class="container">
                     <p class="lead">Изменить музыку</p>
                     <form enctype="multipart/form-data" class="form-horizontal" method="post" id="form">
                         {{ csrf_field() }}
@@ -222,13 +208,9 @@
                             </div>
                         </div>
                     </form>
-                </div>
-
             @endif
-
         @else
             @if(count($books) > 0)
-                <div class="container">
                     <p class="lead">Книги</p>
                     <table class="table table-bordered table-responsive table-hover">
                         <thead>
@@ -258,11 +240,9 @@
                         @endforeach
                         </tbody>
                     </table>
-                </div>
             @endif
 
             @if(count($films) > 0)
-                <div class="container">
                     <p class="lead">Фильмы</p>
                     <table class="table table-bordered table-responsive table-hover">
                         <thead>
@@ -292,11 +272,9 @@
                         @endforeach
                         </tbody>
                     </table>
-                </div>
             @endif
 
             @if(count($bands) > 0)
-                <div class="container">
                     <p class="lead">Музыка</p>
                     <table class="table table-bordered table-responsive table-hover">
                         <thead>
@@ -332,10 +310,7 @@
                         @endforeach
                         </tbody>
                     </table>
-                </div>
             @endif
-
-            <div class="container">
                 <p class="lead">Добавить книгу</p>
                 <form enctype="multipart/form-data" class="form-horizontal" method="post" id="form">
                     {{ csrf_field() }}
@@ -385,10 +360,7 @@
                         </div>
                     </div>
                 </form>
-            </div>
 
-
-            <div class="container">
                 <p class="lead">Добавить фильм</p>
                 <form enctype="multipart/form-data" class="form-horizontal" method="post" id="form">
                     {{ csrf_field() }}
@@ -444,9 +416,8 @@
                         </div>
                     </div>
                 </form>
-            </div>
 
-            <div class="container">
+
                 <p class="lead">Добавить музыку</p>
                 <form enctype="multipart/form-data" class="form-horizontal" method="post" id="form">
                     {{ csrf_field() }}
@@ -520,8 +491,6 @@
                         </div>
                     </div>
                 </form>
-            </div>
-        </section>
     @endif
 @endsection
 

@@ -3,14 +3,10 @@
 @section('page_name', 'Contacts')
 
 @section('css')
-    <link type="text/css" rel="stylesheet" href="{{ asset('/css/style.css') }}" />
-    <link type="text/css" rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}" />
     <link type="text/css" rel="stylesheet" href="{{ asset('/css/jquery.webui-popover.min.css') }}" />
 @endsection
 
 @section('js')
-    <script type="text/javascript" src="{{ asset('/js/mainfunc.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/js/clock.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/js/calendar.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/js/form.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/js/jquery-3.2.1.js') }}"></script>
@@ -20,8 +16,7 @@
 @section('logo', 'CONTACTS')
 
 @section('content')
-    <section class="content">
-        <h1 style="margin: 50px"> Контактная информация </h1>
+        <h1> Контактная информация </h1>
         <table border="0" width="100%">
             <tr>
                 <th>
@@ -62,7 +57,7 @@
             </tr>
         </table>
 
-        <h3 style="margin: 50px">Отправить электронное письмо</h3>
+        <h3>Отправить электронное письмо</h3>
 
         @if (count($errors) > 0)
             <div class="alert alert-danger">
@@ -128,5 +123,4 @@
                 </div>
             </form>
         </div>
-    </section>
 @endsection

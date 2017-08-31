@@ -3,18 +3,14 @@
 @section('page_name', 'About me')
 
 @section('css')
-    <link type="text/css" rel="stylesheet" href="{{ asset('/css/style.css') }}" />
 @endsection
 
 @section('js')
-    <script type="text/javascript" src="{{ asset('/js/mainfunc.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/js/clock.js') }}"></script>
 @endsection
 
 @section('logo', 'ABOUT ME')
 
 @section('content')
-    <section class="content">
         <h1> Произвольная автобиография </h1>
         <div class="biogr">
             <img class="ava" src="{{ asset('/img/bio.jpg') }}" alt="" />
@@ -37,5 +33,4 @@
             <p>Фактически проживаю по адресу:  г. Кривой Рог, ул. Мануйлова, 60, кв.78</p>
             <p>12 августа 2011 г.</p>
         </div>
-    </section>
 @endsection

@@ -3,24 +3,18 @@
 @section('page_name', 'Visitors')
 
 @section('css')
-    <link type="text/css" rel="stylesheet" href="{{ asset('/css/style.css') }}" />
-    <link type="text/css" rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}" />
 @endsection
 
 @section('js')
-    <script type="text/javascript" src="{{ asset('/js/mainfunc.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/js/clock.js') }}"></script>
 @endsection
 
 @section('logo', 'ANDREW EMPTINESS')
 
 @section('content')
-    <section class="content">
         <h1>ПОСЕТИТЕЛИ</h1>
         @include('admin.default.admin-nav')
 
         @if(count($visitors) > 0)
-            <div class="container">
                 <table class="table table-bordered table-responsive table-hover">
                     <thead>
                     <tr>
@@ -58,8 +52,5 @@
                     @endforeach
                     </tbody>
                 </table>
-            </div>
         @endif
-
-    </section>
 @endsection

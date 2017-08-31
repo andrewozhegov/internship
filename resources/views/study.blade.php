@@ -3,21 +3,16 @@
 @section('page_name', 'About me')
 
 @section('css')
-    <link type="text/css" rel="stylesheet" href="{{ asset('/css/style.css') }}" />
 @endsection
 
 @section('js')
-    <script type="text/javascript" src="{{ asset('/js/mainfunc.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/js/clock.js') }}"></script>
 @endsection
 
 @section('logo', 'STUDY')
 
 @section('content')
-
-    <section class="content">
         <h1> Учеба </h1>
-        <table border="1" cellpadding="8" cellspacing="0" width="100%" height="100%">
+        <table class="table table-bordered table-condensed">
             <caption><h3>Севастопольский государственный университет</h3></caption>
             <tr>
                 <th rowspan="3">№</th>
@@ -90,84 +85,4 @@
                 <td>1</td> <td>1</td> <td>0</td> <td>2</td> <td>1</td> <td>1</td>
             </tr>
         </table>
-    </section>
-
-
-    <section class="content">
-        <h1> История посещений </h1>
-        <table border="1" cellpadding="8" cellspacing="0" width="100%" height="100%">
-            <thead>
-            <tr>
-                <th scope="col" >Название страницы</th>
-                <th scope="col" >Количество посещений LS</th>
-                <th scope="col" >Количество посещений C</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>Главная</td>
-                <td>
-                    <script> document.write(localStorage.getItem('IndexVisitCounter')); </script>
-                </td>
-                <td>
-                    <script> document.write(getCookie("IndexCookie")); </script>
-                </td>
-            </tr>
-            <tr>
-                <td>Интересы</td>
-                <td>
-                    <script> document.write(localStorage.getItem('InterestsVisitCounter')); </script>
-                </td>
-                <td>
-                    <script> document.write(getCookie("InterestsCookie")); </script>
-                </td>
-            </tr>
-            <tr>
-                <td>Галерея</td>
-                <td>
-                    <script> document.write(localStorage.getItem('GalleryVisitCounter')); </script>
-                </td>
-                <td>
-                    <script> document.write(getCookie("GalleryCookie")); </script>
-                </td>
-            </tr>
-            <tr>
-                <td>Учёба</td>
-                <td>
-                    <script> document.write(localStorage.getItem('StudyVisitCounter')); </script>
-                </td>
-                <td>
-                    <script>document.write(getCookie("StudyCookie")); </script>
-                </td>
-            </tr>
-            <tr>
-                <td>Тест</td>
-                <td>
-                    <script> document.write(localStorage.getItem('TestVisitCounter')); </script>
-                </td>
-                <td>
-                    <script> document.write(getCookie("TestCookie")); </script>
-                </td>
-            </tr>
-            <tr>
-                <td>Контакты</td>
-                <td>
-                    <script> document.write(localStorage.getItem('ContactsVisitCounter')); </script>
-                </td>
-                <td>
-                    <script> document.write(getCookie("ContactsCookie")); </script>
-                </td>
-            </tr>
-            <tr>
-                <td>Обо мне</td>
-                <td>
-                    <script> document.write(localStorage.getItem('AboutVisitCounter')); </script>
-                </td>
-                <td>
-                    <script> document.write(getCookie("AboutCookie")); </script>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </section>
 @endsection

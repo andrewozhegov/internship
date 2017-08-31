@@ -3,19 +3,14 @@
 @section('page_name', 'Edit blog')
 
 @section('css')
-    <link type="text/css" rel="stylesheet" href="{{ asset('/css/style.css') }}" />
-    <link type="text/css" rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}" />
 @endsection
 
 @section('js')
-    <script type="text/javascript" src="{{ asset('/js/mainfunc.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/js/clock.js') }}"></script>
 @endsection
 
 @section('logo', 'EDIT BLOG')
 
 @section('content')
-    <section class="content">
         <h1>РЕДАКТИРОВАНИЕ БЛОГА</h1>
 
         @include('admin.default.admin-nav')
@@ -31,7 +26,6 @@
         @endif
 
         @if (($status == 'update') && (isset($blogs)))
-            <div class="container">
                 <p class="lead">Изменить запись</p>
                 <form enctype="multipart/form-data" class="form-horizontal" method="post" id="form">
                     {{ csrf_field() }}
@@ -64,12 +58,10 @@
                         </div>
                     </div>
                 </form>
-            </div>
         @else
 
         @if(count($blogs) > 0)
-        <div class="container">
-            <p class="lead">Существующие блоги</p>
+            <p class="lead">Публикации</p>
             <table class="table table-bordered table-responsive table-hover">
                 <thead>
                     <tr>
@@ -95,10 +87,8 @@
                     @endforeach
                 </tbody>
             </table>
-        </div>
         @endif
-
-        <div class="container">
+            <br>
             <p class="lead">Добавить запись</p>
 
             <form enctype="multipart/form-data" class="form-horizontal" method="post" id="form">
@@ -131,7 +121,5 @@
                     </div>
                 </div>
             </form>
-        </div>
-    </section>
     @endif
 @endsection

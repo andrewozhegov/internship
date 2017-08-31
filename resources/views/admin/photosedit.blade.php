@@ -3,19 +3,14 @@
 @section('page_name', 'Photos edit')
 
 @section('css')
-    <link type="text/css" rel="stylesheet" href="{{ asset('/css/style.css') }}" />
-    <link type="text/css" rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}" />
 @endsection
 
 @section('js')
-    <script type="text/javascript" src="{{ asset('/js/mainfunc.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/js/clock.js') }}"></script>
 @endsection
 
 @section('logo', 'PHOTOS EDIT')
 
 @section('content')
-    <section class="content">
         <h1>РЕДАКТОР ФОТОГРАФИЙ</h1>
         @include('admin.default.admin-nav')
 
@@ -30,7 +25,6 @@
         @endif
 
             @if(count($photos) > 0)
-                <div class="container">
                     <p class="lead">Существующие фото</p>
                     <table class="table table-bordered table-responsive table-hover">
                         <thead>
@@ -55,10 +49,7 @@
                         @endforeach
                         </tbody>
                     </table>
-                </div>
             @endif
-
-            <div class="container">
                 <p class="lead">Добавить запись</p>
                 <form enctype="multipart/form-data" class="form-horizontal" method="post" id="form">
                     {{ csrf_field() }}
@@ -96,6 +87,4 @@
                         </div>
                     </div>
                 </form>
-            </div>
-    </section>
 @endsection

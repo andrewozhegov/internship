@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Test;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class TestBookController extends Controller
 {

@@ -28,7 +28,7 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('admin', function(User $user)
         {
-            if ($user->getRole->name == 'admin')
+            if ($user->getRole->name == 'Admin')
             {
                 return TRUE;
             }
