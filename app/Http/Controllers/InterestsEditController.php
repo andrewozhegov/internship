@@ -183,14 +183,14 @@ class InterestsEditController extends Controller
         return redirect('admin/interestsedit');
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $item, $id)
     {
         if (Gate::denies('admin'))
         {
             return redirect('/');
         }
 
-        switch($request->get('item'))
+        switch($item)
         {
             case 'book':
             {

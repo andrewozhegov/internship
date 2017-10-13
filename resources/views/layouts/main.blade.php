@@ -21,7 +21,7 @@
             <ul class="submenu">
                 <li><a href="/" onmouseover="setBg('index')" onmouseout="setBg('index')">main page</a></li>
                 <li><a href="/aboutme" onmouseover="setBg('aboutme')" onmouseout="setBg('index')">about me</a></li>
-                <li> <a href="/interests" onmouseover="setBg('interests')" onmouseout="setBg('index')">interests</a>
+                <li><a href="/interests" onmouseover="setBg('interests')" onmouseout="setBg('index')">interests</a>
                     <ul>
                         <li><a href="/interests#books">books</a></li>
                         <li><a href="/interests#films">films</a></li>

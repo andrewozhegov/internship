@@ -493,9 +493,3 @@
                 </form>
     @endif
 @endsection
-
-{{--
-     TODO: оформить это все во вкладках
-     TODO: придумать забавные placeholderы
-
-     --}}

@@ -18,11 +18,7 @@ class TestController extends Controller
         $rules = [
             'answer1' => 'required|in:1,2,3',
             'answer2' => 'required|numeric',
-            'answer31' => 'required_without_all:answer32,answer33,answer34,answer35'/*,
-            'answer32' => '',
-            'answer33' => '',
-            'answer34' => '',
-            'answer35' => ''*/
+            'answer31' => 'required_without_all:answer32,answer33,answer34,answer35'
         ];
 
         $messages = [

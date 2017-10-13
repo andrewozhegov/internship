@@ -45,6 +45,7 @@ class BlogEditController extends Controller
             'image' => 'file|image',
             'text' => 'required'
         ]);
+
         $title = $request->get('title');
         $image = 'blog_img/'.$request->file('blog-img')->getClientOriginalName();
         $text = $request->get('text');
